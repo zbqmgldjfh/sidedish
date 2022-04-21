@@ -3,7 +3,7 @@ import styled from 'styled-components';
 import FoodCard from './FoodCard';
 
 const CardsWrap = styled.ul`
-  padding: 80px;
+  padding: 80px 40px;
   display: grid;
   grid-template-columns: ${(props) => `repeat(${props.size}, 1fr)`};
 `;

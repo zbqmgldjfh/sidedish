@@ -1,8 +1,8 @@
-import Icon from './DefaultIconInfo';
+import ArrowIcons from './ArrowIcons';
 
 export default function LeftArrowIcon() {
   return (
-    <Icon
+    <ArrowIcons
       width="11"
       height="20"
       viewBox="0 0 11 20"
@@ -16,6 +16,6 @@ export default function LeftArrowIcon() {
         stroke-linecap="square"
         stroke-linejoin="round"
       />
-    </Icon>
+    </ArrowIcons>
   );
 }
