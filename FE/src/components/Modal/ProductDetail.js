@@ -7,6 +7,8 @@ import ModalInfoContextStore from '../../stores/ModalInfoStore';
 import Text from '../Text';
 import ProductImg from './ProductImg';
 import ProductInfo from './ProductInfo';
+import TotalAmount from './TotalAmount';
+import TotalCost from './TotalCost';
 
 const SIZE_OF_ORIGIN = 596;
 const REDUCTION_RATIO = 1.3;
@@ -15,7 +17,7 @@ const ProductDetailWrap = styled.div`
   position: absolute;
   width: 100%;
   height: calc(${SIZE_OF_ORIGIN}px / ${REDUCTION_RATIO});
-  background-color: ${colors.offWhite};
+  background-color: ${colors.white};
 `;
 
 const Close = styled.div`
@@ -25,6 +27,12 @@ const Close = styled.div`
   top: 32px;
   left: 650px;
   cursor: pointer;
+`;
+
+const OrderButton = styled.div`
+  background-color: black;
+  width: 30px;
+  height: 30px;
 `;
 
 const ProductDetail = () => {
@@ -41,9 +49,9 @@ const ProductDetail = () => {
       </Close>
       <ProductImg />
       <ProductInfo />
-      {/* <TotalAmount />
+      <TotalAmount />
       <TotalCost />
-      <OrderButton /> */}
+      <OrderButton />
     </ProductDetailWrap>
   );
 };
