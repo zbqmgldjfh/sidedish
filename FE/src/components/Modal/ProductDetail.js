@@ -5,6 +5,8 @@ import colors from '../../constants/colors';
 import { FONT } from '../../constants/fonts';
 import ModalInfoContextStore from '../../stores/ModalInfoStore';
 import Text from '../Text';
+import ProductImg from './ProductImg';
+import ProductInfo from './ProductInfo';
 
 const SIZE_OF_ORIGIN = 596;
 const REDUCTION_RATIO = 1.3;
@@ -24,6 +26,7 @@ const Close = styled.div`
   left: 650px;
   cursor: pointer;
 `;
+
 const ProductDetail = () => {
   const ModalInfo = useContext(ModalInfoContextStore);
   const onCloseClick = () => {
@@ -36,6 +39,11 @@ const ProductDetail = () => {
       <Close onClick={onCloseClick}>
         <Text font={FONT.MEDIUM}>닫기</Text>
       </Close>
+      <ProductImg />
+      <ProductInfo />
+      {/* <TotalAmount />
+      <TotalCost />
+      <OrderButton /> */}
     </ProductDetailWrap>
   );
 };

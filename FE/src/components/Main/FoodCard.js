@@ -3,6 +3,7 @@ import styled from 'styled-components';
 
 import colors from '../../constants/colors';
 import { FONT } from '../../constants/fonts';
+import modalFoods from '../../mocks/modalFoods';
 import ModalInfoContextStore from '../../stores/ModalInfoStore';
 import Tag from '../Tag';
 import Text from '../Text';
@@ -35,7 +36,7 @@ const FoodCard = ({ food }) => {
 
   const onCardClick = () => {
     if (ModalInfo.modalDisplay === 'none') {
-      ModalInfo.setCardInfo(food);
+      ModalInfo.setCardInfo({ ...food, ...modalFoods[food.detail_hash] });
       ModalInfo.setModalDisplay('block');
     }
   };
