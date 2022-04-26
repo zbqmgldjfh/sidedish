@@ -3,6 +3,7 @@ import styled from 'styled-components';
 
 import ModalInfoContextStore from '../../stores/ModalInfoStore';
 import ProductDetail from './ProductDetail';
+import RelatedProduct from './RelatedProduct';
 
 const HEIGHT_SIZE_OF_ORIGIN = 994;
 const WIDTH_SIZE_OF_ORIGIN = 960;
@@ -52,7 +53,7 @@ const Modal = () => {
       <ModalWrap>
         <MainModal>
           <ProductDetail />
-          {/* <relatedProduct /> */}
+          <RelatedProduct />
         </MainModal>
       </ModalWrap>
     </ModalLayer>

@@ -5,6 +5,7 @@ import colors from '../../constants/colors';
 import { FONT } from '../../constants/fonts';
 import ModalInfoContextStore from '../../stores/ModalInfoStore';
 import Text from '../Text';
+import OrderButton from './OrderButton';
 import ProductImg from './ProductImg';
 import ProductInfo from './ProductInfo';
 import TotalAmount from './TotalAmount';
@@ -27,12 +28,6 @@ const Close = styled.div`
   top: 32px;
   left: 650px;
   cursor: pointer;
-`;
-
-const OrderButton = styled.div`
-  background-color: black;
-  width: 30px;
-  height: 30px;
 `;
 
 const ProductDetail = () => {

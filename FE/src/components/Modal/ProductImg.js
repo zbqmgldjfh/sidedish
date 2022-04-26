@@ -1,5 +1,6 @@
+/* eslint-disable no-unsafe-optional-chaining */
 /* eslint-disable array-callback-return */
-import { useContext } from 'react';
+import { useContext, useState, useEffect } from 'react';
 import styled from 'styled-components';
 
 import ModalInfoContextStore from '../../stores/ModalInfoStore';
@@ -33,6 +34,7 @@ const ThumbImgWrap = styled.div`
 const ThumbImg = styled.img`
   width: 55px;
   height: 55px;
+  cursor: pointer;
 `;
 
 const FakeImg = styled.div`
@@ -41,24 +43,47 @@ const FakeImg = styled.div`
 `;
 const ProductImg = () => {
   const ModalInfo = useContext(ModalInfoContextStore);
+  const [currThumbImg, setCurrThumbImg] = useState('');
+  const [currTopImg, setCurrTopImg] = useState(ModalInfo.cardInfo.image);
   const THUMB_IMAGES_LENGTH = 5;
-
   for (
     let i = 0;
     // eslint-disable-next-line no-unsafe-optional-chaining
-    i < THUMB_IMAGES_LENGTH - ModalInfo.cardInfo?.thumb_images?.length;
+    i < THUMB_IMAGES_LENGTH - ModalInfo?.cardInfo?.thumb_images?.length;
     i += 1
   ) {
-    ModalInfo.cardInfo.thumb_images.push(' ');
+    ModalInfo?.cardInfo?.thumb_images.push(' ');
   }
+
+  useEffect(() => {
+    if (currThumbImg !== '') {
+      ModalInfo.cardInfo?.thumb_images?.splice(
+        currThumbImg.idx,
+        1,
+        `${ModalInfo?.cardInfo?.image}`,
+      );
+
+      setCurrTopImg(currThumbImg.api);
+      console.log(ModalInfo.cardInfo?.thumb_images);
+      console.log(currTopImg);
+    }
+  });
 
   return (
     <ProductImgWrap>
-      <TopImg src={ModalInfo.cardInfo.image} />
+      <TopImg src={currTopImg} />
       <ThumbImgWrap>
         {ModalInfo.cardInfo?.thumb_images?.map((api, idx) => {
           if (api !== ' ') {
-            return <ThumbImg key={api + idx} src={api} />;
+            return (
+              <ThumbImg
+                onClick={() => {
+                  setCurrThumbImg({ api, idx });
+                }}
+                key={api + idx}
+                src={api}
+              />
+            );
           }
           return <FakeImg key={api + idx} />;
         })}

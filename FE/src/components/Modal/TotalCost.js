@@ -12,21 +12,29 @@ const TotalCostWrap = styled.div`
   display: flex;
   align-items: center;
   position: absolute;
-  width: calc(174px / ${REDUCTION_RATIO});
+  width: auto;
   height: calc(30px / ${REDUCTION_RATIO});
-  left: calc(738px / ${REDUCTION_RATIO});
+  right: 33px;
   top: calc(337px / ${REDUCTION_RATIO});
-  background-color: black;
+`;
+
+const CostWrap = styled.div`
+  margin-right: 20px;
 `;
 
 const TotalCost = () => {
   const ModalInfo = useContext(ModalInfoContextStore);
-  <TotalCostWrap>
-    <Text font={FONT.MEDIUM} textColor={colors.greyThree}>
-      총 주문금액
-    </Text>
-    <Text font={FONT.LARGE_BOLD}>{ModalInfo.cardInfo.s_price}</Text>
-  </TotalCostWrap>;
+
+  return (
+    <TotalCostWrap>
+      <CostWrap>
+        <Text font={FONT.MEDIUM} textColor={colors.greyThree}>
+          총 주문금액
+        </Text>
+      </CostWrap>
+      <Text font={FONT.LARGE_BOLD}>{ModalInfo.cardInfo.s_price}</Text>
+    </TotalCostWrap>
+  );
 };
 
 export default TotalCost;

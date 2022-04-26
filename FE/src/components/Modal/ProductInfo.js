@@ -45,7 +45,9 @@ const DiscountPrice = styled.div`
   margin-left: 8px;
 `;
 
-const Badge = styled.div``;
+const Badge = styled.div`
+  display: flex;
+`;
 
 const Info = styled.div`
   display: flex;
@@ -104,7 +106,7 @@ const ProductInfo = () => {
           ))}
         </Badge>
         <DiscountPrice>
-          <Text font={FONT.LARGE_BOLD}>{ModalInfo.cardInfo.s_price}</Text>
+          <Text font={FONT.MEDIUM_XBOLD}>{ModalInfo.cardInfo.s_price}</Text>
         </DiscountPrice>
       </BadgeAndPrice>
       <Info>
