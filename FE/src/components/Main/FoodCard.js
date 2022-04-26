@@ -4,7 +4,7 @@ import styled from 'styled-components';
 import colors from '../../constants/colors';
 import { FONT } from '../../constants/fonts';
 import ModalInfoContextStore from '../../stores/ModalInfoStore';
-import Tag from '../Tag';
+import Tag from '../tag';
 import Text from '../Text';
 
 const CardWrap = styled.li`
