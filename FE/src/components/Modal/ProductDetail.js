@@ -36,6 +36,7 @@ const ProductDetail = () => {
     if (ModalInfo.modalDisplay === 'block') {
       ModalInfo.setModalDisplay('none');
     }
+    ModalInfo.setAmount(1);
   };
   return (
     <ProductDetailWrap>

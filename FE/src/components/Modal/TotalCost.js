@@ -32,7 +32,9 @@ const TotalCost = () => {
           총 주문금액
         </Text>
       </CostWrap>
-      <Text font={FONT.LARGE_BOLD}>{ModalInfo.cardInfo.s_price}</Text>
+      <Text font={FONT.LARGE_BOLD}>
+        {(ModalInfo.cardInfo.s_price * ModalInfo.amount).toLocaleString()}원
+      </Text>
     </TotalCostWrap>
   );
 };
