@@ -12,8 +12,8 @@ const CardsWrap = styled.ul`
 
 const ModalFoodCards = ({ foods, size }) => (
   <CardsWrap size={size}>
-    {foods.map((food) => (
-      <ModalFoodCard key={food.detail_hash} food={food} />
+    {foods.map((food, idx) => (
+      <ModalFoodCard key={food.detail_hash + idx} food={food} />
     ))}
   </CardsWrap>
 );

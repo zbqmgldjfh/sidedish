@@ -1,4 +1,4 @@
-// import Header from './components/Header';
+import Header from './components/Header';
 import Main from './components/Main/Main';
 import Modal from './components/Modal/Modal';
 import CardInfoContext from './context/ModalCardInfoContext';
@@ -9,7 +9,7 @@ function App() {
     <CardInfoContext>
       <div className="App">
         <GlobalStyles />
-        {/* <Header /> */}
+        <Header />
         <Main />
         <Modal />
       </div>

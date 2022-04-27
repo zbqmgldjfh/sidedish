@@ -1,10 +1,7 @@
-import { useContext } from 'react';
 import styled from 'styled-components';
 
 import colors from '../../constants/colors';
 import { FONT } from '../../constants/fonts';
-import modalFoods from '../../mocks/modalFoods';
-import ModalInfoContextStore from '../../stores/ModalInfoStore';
 import Text from '../Text';
 
 const CardWrap = styled.li`
@@ -26,26 +23,17 @@ const OriginPrice = styled(Text)`
   text-decoration: line-through;
 `;
 
-const ModalFoodCard = ({ food }) => {
-  const ModalInfo = useContext(ModalInfoContextStore);
+const ModalFoodCard = ({ food }) => (
+  <CardWrap>
+    <CardImg src={food.image} alt={food.alt} />
+    <CardText>
+      <Text font={FONT.XSMALL}>{food.title}</Text>
+    </CardText>
+    <CardText>
+      <Text font={FONT.SMALL_BOLD}>{food.s_price}원</Text>
+      <OriginPrice font={FONT.XSMALL}>{food.n_price}</OriginPrice>
+    </CardText>
+  </CardWrap>
+);
 
-  const onCardClick = () => {
-    if (ModalInfo.modalDisplay === 'none') {
-      ModalInfo.setCardInfo({ ...food, ...modalFoods[food.detail_hash] });
-      ModalInfo.setModalDisplay('block');
-    }
-  };
-  return (
-    <CardWrap onClick={onCardClick}>
-      <CardImg src={food.image} alt={food.alt} />
-      <CardText>
-        <Text font={FONT.XSMALL}>{food.title}</Text>
-      </CardText>
-      <CardText>
-        <Text font={FONT.SMALL_BOLD}>{food.s_price}원</Text>
-        <OriginPrice font={FONT.XSMALL}>{food.n_price}</OriginPrice>
-      </CardText>
-    </CardWrap>
-  );
-};
 export default ModalFoodCard;

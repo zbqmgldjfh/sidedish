@@ -1,6 +1,4 @@
-/* eslint-disable no-unsafe-optional-chaining */
-/* eslint-disable array-callback-return */
-import { useContext, useState, useEffect } from 'react';
+import { useContext, useEffect, useState } from 'react';
 import styled from 'styled-components';
 
 import ModalInfoContextStore from '../../stores/ModalInfoStore';
@@ -26,66 +24,42 @@ const ThumbImgWrap = styled.div`
   width: 100%;
   height: 60px;
   position: absolute;
+
   top: calc(392px / ${REDUCTION_RATIO});
   margin-top: 7px;
-  justify-content: space-between;
+  justify-content: flex-start;
+  align-items: center;
 `;
 
 const ThumbImg = styled.img`
   width: 55px;
   height: 55px;
   cursor: pointer;
+  margin-right: 6.53px;
 `;
 
-const FakeImg = styled.div`
-  width: 55px;
-  height: 55px;
-`;
 const ProductImg = () => {
   const ModalInfo = useContext(ModalInfoContextStore);
-  const [currThumbImg, setCurrThumbImg] = useState('');
-  // const [currTopImg, setCurrTopImg] = useState(ModalInfo.cardInfo.image);
-  const THUMB_IMAGES_LENGTH = 5;
-  for (
-    let i = 0;
-    // eslint-disable-next-line no-unsafe-optional-chaining
-    i < THUMB_IMAGES_LENGTH - ModalInfo?.cardInfo?.thumb_images?.length;
-    i += 1
-  ) {
-    ModalInfo?.cardInfo?.thumb_images.push(' ');
-  }
-
+  const [thumbImgInfo, setThumbImgInfo] = useState([]);
   useEffect(() => {
-    if (currThumbImg !== '') {
-      ModalInfo.cardInfo?.thumb_images?.splice(
-        currThumbImg.idx,
-        1,
-        ModalInfo?.cardInfo?.image,
-      );
-      ModalInfo.cardInfo.image = currThumbImg.api;
-      console.log(ModalInfo.cardInfo?.thumb_images);
-      // console.log(currTopImg);
-    }
-  });
+    ModalInfo.thumbImg.splice(thumbImgInfo.idx, 1, ModalInfo.topImg);
+    ModalInfo.setThumbImg(ModalInfo.thumbImg);
+    ModalInfo.setTopImg(thumbImgInfo.api);
+  }, [thumbImgInfo]);
 
   return (
     <ProductImgWrap>
-      <TopImg src={ModalInfo.cardInfo.image} />
+      <TopImg src={ModalInfo.topImg} />
       <ThumbImgWrap>
-        {ModalInfo.cardInfo?.thumb_images?.map((api, idx) => {
-          if (api !== ' ') {
-            return (
-              <ThumbImg
-                onClick={() => {
-                  setCurrThumbImg({ api, idx });
-                }}
-                key={api + idx}
-                src={api}
-              />
-            );
-          }
-          return <FakeImg key={api + idx} />;
-        })}
+        {ModalInfo.thumbImg.map((api, idx) => (
+          <ThumbImg
+            onClick={() => {
+              setThumbImgInfo({ api, idx });
+            }}
+            key={api + idx}
+            src={api}
+          />
+        ))}
       </ThumbImgWrap>
     </ProductImgWrap>
   );

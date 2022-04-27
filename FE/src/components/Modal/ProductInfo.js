@@ -106,7 +106,9 @@ const ProductInfo = () => {
           ))}
         </Badge>
         <DiscountPrice>
-          <Text font={FONT.MEDIUM_XBOLD}>{ModalInfo.cardInfo.s_price?.toLocaleString()}원</Text>
+          <Text font={FONT.MEDIUM_XBOLD}>
+            {ModalInfo.cardInfo.s_price?.toLocaleString()}원
+          </Text>
         </DiscountPrice>
       </BadgeAndPrice>
       <Info>

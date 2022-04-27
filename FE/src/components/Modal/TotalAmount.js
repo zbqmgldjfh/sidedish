@@ -22,6 +22,7 @@ const TotalAmountWrap = styled.div`
 
 const IconWrap = styled.button`
   background-color: white;
+  cursor: pointer;
 `;
 const TotalAmount = () => {
   const ModalInfo = useContext(ModalInfoContextStore);
@@ -38,14 +39,14 @@ const TotalAmount = () => {
 
   return (
     <TotalAmountWrap>
-    <IconWrap onClick={onMinusBtnClick}>
-      <MinusIcon />
-    </IconWrap>
-    <Text font={FONT.MEDIUM_BOLD}>{ModalInfo.amount}</Text>
-    <IconWrap onClick={onPlusBtnClick}>
-      <PlusIcon />
-    </IconWrap>
-  </TotalAmountWrap>
+      <IconWrap onClick={onMinusBtnClick}>
+        <MinusIcon />
+      </IconWrap>
+      <Text font={FONT.MEDIUM_BOLD}>{ModalInfo.amount}</Text>
+      <IconWrap onClick={onPlusBtnClick}>
+        <PlusIcon />
+      </IconWrap>
+    </TotalAmountWrap>
   );
 };
 

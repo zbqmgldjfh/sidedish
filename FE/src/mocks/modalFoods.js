@@ -5,6 +5,9 @@ const modalFoods = {
     thumb_images: [
       'http://public.codesquad.kr/jk/storeapp/data/main/1155_ZIP_P_0081_T.jpg',
       'http://public.codesquad.kr/jk/storeapp/data/main/1155_ZIP_P_0081_S.jpg',
+      'http://public.codesquad.kr/jk/storeapp/data/main/1155_ZIP_P_0081_T.jpg',
+      'http://public.codesquad.kr/jk/storeapp/data/main/1155_ZIP_P_0081_S.jpg',
+      'http://public.codesquad.kr/jk/storeapp/data/main/1155_ZIP_P_0081_T.jpg',
     ],
     product_description: '오리 주물럭_반조리',
     point: '126원',

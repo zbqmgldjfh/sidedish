@@ -37,6 +37,8 @@ const FoodCard = ({ food }) => {
   const onCardClick = () => {
     if (ModalInfo.modalDisplay === 'none') {
       ModalInfo.setCardInfo({ ...food, ...modalFoods[food.detail_hash] });
+      ModalInfo.setThumbImg(modalFoods[food.detail_hash].thumb_images);
+      ModalInfo.setTopImg(food.image);
       ModalInfo.setModalDisplay('block');
     }
   };
