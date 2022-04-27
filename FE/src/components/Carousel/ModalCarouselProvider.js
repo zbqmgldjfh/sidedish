@@ -10,13 +10,14 @@ const CarouselWrapper = styled.div`
   position: relative;
   width: 100%;
   height: 100%;
+  overflow: hidden;
 `;
 
 const Slider = styled.div`
   display: flex;
   width: ${({ slidesLen }) => `${slidesLen * 100}%`};
   overflow: hidden;
-  transform: ${({ curPage }) => `translateX(-${curPage * 100}%)`};
+  transform: ${({ curPage }) => `translateX(-${curPage * 50}%)`};
   transition: transform 1s;
 `;
 
@@ -66,7 +67,7 @@ const ButtonNext = ({ onButtonClick, css, isLastPage, transitioning }) => (
   </ButtonWrap>
 );
 
-const CarouselProvider = ({
+const ModalCarouselProvider = ({
   maxPage,
   curPage,
   transitioning,
@@ -99,7 +100,7 @@ const CarouselProvider = ({
         css={buttonPrevCss}
       />
       <PageStatus>
-        <div>{curPage}</div>/<div>{maxPage}</div>
+        <div>{curPage + 1}</div>/<div>{maxPage}</div>
       </PageStatus>
       <ButtonNext
         isLastPage={isLastPage}
@@ -111,4 +112,4 @@ const CarouselProvider = ({
   );
 };
 
-export default CarouselProvider;
+export default ModalCarouselProvider;

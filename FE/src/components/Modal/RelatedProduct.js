@@ -4,7 +4,7 @@ import styled from 'styled-components';
 import colors from '../../constants/colors';
 import { FONT } from '../../constants/fonts';
 import subContents from '../../mocks/subContents';
-import CarouselProvider from '../Carousel/ModalCarouselProvider';
+import ModalCarouselProvider from '../Carousel/ModalCarouselProvider';
 import useCarousel from '../Carousel/useCarousel';
 import Text from '../Text';
 import ModalFoodCards from './ModalFoodCards';
@@ -58,7 +58,7 @@ const RelatedProduct = () => {
       <SubTitle>
         <Text font={FONT.LARGE_BOLD}>함께하면 더 맛있는 상품</Text>
       </SubTitle>
-      <CarouselProvider {...carousel} />
+      <ModalCarouselProvider {...carousel} />
     </RelatedProductWrap>
   );
 };
