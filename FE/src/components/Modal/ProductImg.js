@@ -44,7 +44,7 @@ const FakeImg = styled.div`
 const ProductImg = () => {
   const ModalInfo = useContext(ModalInfoContextStore);
   const [currThumbImg, setCurrThumbImg] = useState('');
-  const [currTopImg, setCurrTopImg] = useState(ModalInfo.cardInfo.image);
+  // const [currTopImg, setCurrTopImg] = useState(ModalInfo.cardInfo.image);
   const THUMB_IMAGES_LENGTH = 5;
   for (
     let i = 0;
@@ -60,18 +60,17 @@ const ProductImg = () => {
       ModalInfo.cardInfo?.thumb_images?.splice(
         currThumbImg.idx,
         1,
-        `${ModalInfo?.cardInfo?.image}`,
+        ModalInfo?.cardInfo?.image,
       );
-
-      setCurrTopImg(currThumbImg.api);
+      ModalInfo.cardInfo.image = currThumbImg.api;
       console.log(ModalInfo.cardInfo?.thumb_images);
-      console.log(currTopImg);
+      // console.log(currTopImg);
     }
   });
 
   return (
     <ProductImgWrap>
-      <TopImg src={currTopImg} />
+      <TopImg src={ModalInfo.cardInfo.image} />
       <ThumbImgWrap>
         {ModalInfo.cardInfo?.thumb_images?.map((api, idx) => {
           if (api !== ' ') {

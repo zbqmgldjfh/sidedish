@@ -42,7 +42,7 @@ const ModalFoodCard = ({ food }) => {
         <Text font={FONT.XSMALL}>{food.title}</Text>
       </CardText>
       <CardText>
-        <Text font={FONT.SMALL_BOLD}>{food.s_price}</Text>
+        <Text font={FONT.SMALL_BOLD}>{food.s_price}원</Text>
         <OriginPrice font={FONT.XSMALL}>{food.n_price}</OriginPrice>
       </CardText>
     </CardWrap>
