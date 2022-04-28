@@ -38,7 +38,7 @@ const ProductImg = () => {
   const ModalInfo = useContext(ModalInfoContextStore);
   const [thumbImgInfo, setThumbImgInfo] = useState([]);
   useEffect(() => {
-    const newThumbImg = ModalInfo.thumbImg;
+    const newThumbImg = ModalInfo.thumbImg.slice();
     newThumbImg.splice(thumbImgInfo.idx, 1, ModalInfo.topImg);
     ModalInfo.setThumbImg(newThumbImg);
     ModalInfo.setTopImg(thumbImgInfo.api);

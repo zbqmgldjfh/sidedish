@@ -1,6 +1,7 @@
 import { useContext } from 'react';
 import styled from 'styled-components';
 
+import { moneyToWon } from '../../common/utils';
 import colors from '../../constants/colors';
 import { FONT } from '../../constants/fonts';
 import ModalInfoContextStore from '../../stores/ModalInfoStore';
@@ -72,24 +73,22 @@ const ProductInfo = () => {
   return (
     <ProductInfoWrap>
       <Name>
-        <Text font={FONT.LARGE_BOLD}>
-          {ModalInfo.cardInfo.product_description}
-        </Text>
+        <Text font={FONT.LARGE_BOLD}>{ModalInfo.cardInfo.title}</Text>
       </Name>
       <PrimeCost>
         <Text font={FONT.SMALL_BOLD} textColor={colors.greyThree}>
-          {ModalInfo.cardInfo.n_price}
+          {ModalInfo.cardInfo.price}
         </Text>
       </PrimeCost>
       <BadgeAndPrice>
         <Badge>
-          {ModalInfo.cardInfo?.badge?.map((badgeName, idx) => (
+          {[ModalInfo.cardInfo.badge].map((badgeName, idx) => (
             <Tag key={badgeName + idx} badge={badgeName} />
           ))}
         </Badge>
         <DiscountPrice>
           <Text font={FONT.MEDIUM_XBOLD}>
-            {ModalInfo.cardInfo.s_price?.toLocaleString()}원
+            {moneyToWon(ModalInfo.cardInfo.discountPrice)}
           </Text>
         </DiscountPrice>
       </BadgeAndPrice>
@@ -99,7 +98,9 @@ const ProductInfo = () => {
             적립금
           </Text>
           <InfoDetail>
-            <Text font={FONT.SMALL_BOLD}>{ModalInfo.cardInfo.point}</Text>
+            <Text font={FONT.SMALL_BOLD}>
+              {moneyToWon(ModalInfo.cardInfo.rewardPoint)}
+            </Text>
           </InfoDetail>
         </Point>
         <DeliveryInfo>
@@ -108,7 +109,8 @@ const ProductInfo = () => {
           </Text>
           <DeliveryInfoDetail>
             <Text font={FONT.SMALL_BOLD}>
-              {ModalInfo.cardInfo.delivery_info}
+              배송정보 api 주세요~
+              {/* {ModalInfo.cardInfo.delivery_info} */}
             </Text>
           </DeliveryInfoDetail>
         </DeliveryInfo>
@@ -118,7 +120,8 @@ const ProductInfo = () => {
           </Text>
           <InfoDetail>
             <Text font={FONT.SMALL_BOLD}>
-              {ModalInfo.cardInfo.delivery_fee}
+              배송비도 주세요~
+              {/* {ModalInfo.cardInfo.delivery_fee} */}
             </Text>
           </InfoDetail>
         </Charge>

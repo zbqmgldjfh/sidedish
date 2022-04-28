@@ -1,7 +1,8 @@
+import { useContext } from 'react';
 import styled from 'styled-components';
 
 import colors from '../../constants/colors';
-import subContents from '../../mocks/subContents';
+import ModalInfoContextStore from '../../stores/ModalInfoStore';
 import ModalCarouselProvider from '../Carousel/ModalCarouselProvider';
 import useCarousel from '../Carousel/useCarousel';
 import FoodCards from '../Main/FoodCards';
@@ -15,13 +16,16 @@ const RelatedProductWrap = styled.div`
 `;
 
 const RelatedProduct = () => {
-  const maxPage = Math.ceil(subContents[0].foods.length / FOOD_PER_PAGE);
-
+  const ModalInfo = useContext(ModalInfoContextStore);
+  // eslint-disable-next-line no-unsafe-optional-chaining
+  const maxPage = Math.ceil(ModalInfo.relatedContent.length / FOOD_PER_PAGE);
+  console.log(maxPage);
   const getSlideDataByPage = (page) => {
+    console.log(ModalInfo.relatedContent);
     const startIndex = page * FOOD_PER_PAGE;
     return (
       <FoodCards
-        foods={subContents[0].foods.slice(
+        foods={ModalInfo.relatedContent.slice(
           startIndex,
           startIndex + FOOD_PER_PAGE,
         )}
