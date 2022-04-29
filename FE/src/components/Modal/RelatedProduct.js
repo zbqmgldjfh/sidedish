@@ -17,9 +17,8 @@ const RelatedProductWrap = styled.div`
 
 const RelatedProduct = () => {
   const ModalInfo = useContext(ModalInfoContextStore);
-  // eslint-disable-next-line no-unsafe-optional-chaining
   const maxPage = Math.ceil(ModalInfo.relatedContent.length / FOOD_PER_PAGE);
-  console.log(maxPage);
+
   const getSlideDataByPage = (page) => {
     console.log(ModalInfo.relatedContent);
     const startIndex = page * FOOD_PER_PAGE;

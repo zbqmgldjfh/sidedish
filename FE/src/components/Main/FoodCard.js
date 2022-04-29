@@ -48,16 +48,6 @@ const FoodCard = ({ food, type = '' }) => {
       ModalInfo.setThumbImg([food.images.sideOne, food.images.sideTwo]);
       ModalInfo.setTopImg(food.images.mainUrl);
       ModalInfo.setModalDisplay('block');
-      //   const fetchRelatedContent = async () => {
-      //     const relatedContents = await categoriesApi.getRelatedFoodsByFood(
-      //       Number(food.id),
-      //     );
-      //     await ModalInfo.setRelatedContent(
-      //       relatedContents.data.suggestItemList.content,
-      //     );
-      //     console.log(ModalInfo.relatedContent);
-      //   };
-      //   fetchRelatedContent();
     }
   };
 
