@@ -1,4 +1,4 @@
-import { useContext, useEffect, useState } from 'react';
+import { useContext, useState } from 'react';
 import styled from 'styled-components';
 
 import ModalInfoContextStore from '../../stores/ModalInfoStore';
@@ -36,25 +36,26 @@ const ThumbImg = styled.img`
 
 const ProductImg = () => {
   const ModalInfo = useContext(ModalInfoContextStore);
-  const [thumbImgInfo, setThumbImgInfo] = useState([]);
-  useEffect(() => {
-    const newThumbImg = ModalInfo.thumbImg.slice();
-    newThumbImg.splice(thumbImgInfo.idx, 1, ModalInfo.topImg);
-    ModalInfo.setThumbImg(newThumbImg);
-    ModalInfo.setTopImg(thumbImgInfo.api);
-  }, [thumbImgInfo]);
+  const [mainImageUrl, setMainImageUrl] = useState(ModalInfo.topImg);
+  const [thumbImages, setThumbImages] = useState(ModalInfo.thumbImg);
+
+  const handleSubImages = (idx) => {
+    const newThumbImages = thumbImages.filter((_, i) => i !== idx);
+    setThumbImages([...newThumbImages, mainImageUrl]);
+  };
 
   return (
     <ProductImgWrap>
-      <TopImg src={ModalInfo.topImg} />
+      <TopImg src={mainImageUrl} />
       <ThumbImgWrap>
-        {ModalInfo.thumbImg.map((api, idx) => (
+        {ModalInfo.thumbImg.map((subImageUrl, idx) => (
           <ThumbImg
-            onClick={() => {
-              setThumbImgInfo({ api, idx });
+            onClick={({ target }) => {
+              setMainImageUrl(target.src);
+              handleSubImages(idx);
             }}
-            key={api + idx}
-            src={api}
+            key={subImageUrl + idx}
+            src={subImageUrl}
           />
         ))}
       </ThumbImgWrap>

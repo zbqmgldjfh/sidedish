@@ -1,7 +1,6 @@
-import { useContext, useEffect } from 'react';
+import { useContext } from 'react';
 import styled from 'styled-components';
 
-import categoriesApi from '../../apis/categoriesApi';
 import { moneyToWon } from '../../common/utils';
 import BADGE from '../../constants/badge';
 import colors from '../../constants/colors';
@@ -42,8 +41,8 @@ const FoodCard = ({ food, type = '' }) => {
   const ModalInfo = useContext(ModalInfoContextStore);
 
   const onCardClick = () => {
-    console.log({ ...food });
     if (ModalInfo.modalDisplay === 'none') {
+      ModalInfo.setModalDetail('food');
       ModalInfo.setCardInfo(food);
       ModalInfo.setThumbImg([food.images.sideOne, food.images.sideTwo]);
       ModalInfo.setTopImg(food.images.mainUrl);
@@ -51,16 +50,6 @@ const FoodCard = ({ food, type = '' }) => {
     }
   };
 
-  useEffect(() => {
-    const fetchRelatedContent = async () => {
-      const relatedContents = await categoriesApi.getRelatedFoodsByFood(
-        Number(food.id),
-      );
-      ModalInfo.setRelatedContent(relatedContents.data.suggestItemList.content);
-      console.log(ModalInfo.relatedContent);
-    };
-    fetchRelatedContent();
-  }, [food]);
   const displayPrice = food.discountPrice ? food.discountPrice : food.price;
   const originPrice = food.price ? food.price : '';
 

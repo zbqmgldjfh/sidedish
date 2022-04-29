@@ -9,6 +9,7 @@ const CardInfoContext = (props) => {
   const [thumbImg, setThumbImg] = useState([]);
   const [topImg, setTopImg] = useState('');
   const [relatedContent, setRelatedContent] = useState([]);
+  const [modalDetail, setModalDetail] = useState('');
   const ModalInfo = {
     cardInfo,
     modalDisplay,
@@ -16,12 +17,14 @@ const CardInfoContext = (props) => {
     thumbImg,
     topImg,
     relatedContent,
+    modalDetail,
     setModalDisplay,
     setCardInfo,
     setAmount,
     setThumbImg,
     setTopImg,
     setRelatedContent,
+    setModalDetail,
   };
 
   return (
