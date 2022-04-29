@@ -69,7 +69,7 @@ const Charge = styled.div`
 
 const ProductInfo = () => {
   const ModalInfo = useContext(ModalInfoContextStore);
-
+  console.log(ModalInfo.cardInfo);
   return (
     <ProductInfoWrap>
       <Name>
@@ -109,8 +109,7 @@ const ProductInfo = () => {
           </Text>
           <DeliveryInfoDetail>
             <Text font={FONT.SMALL_BOLD}>
-              배송정보 api 주세요~
-              {/* {ModalInfo.cardInfo.delivery_info} */}
+              {ModalInfo.cardInfo.shipInfo.shippingDescription}
             </Text>
           </DeliveryInfoDetail>
         </DeliveryInfo>
@@ -120,8 +119,7 @@ const ProductInfo = () => {
           </Text>
           <InfoDetail>
             <Text font={FONT.SMALL_BOLD}>
-              배송비도 주세요~
-              {/* {ModalInfo.cardInfo.delivery_fee} */}
+              {moneyToWon(ModalInfo.cardInfo.shipInfo.shippingFee)}
             </Text>
           </InfoDetail>
         </Charge>

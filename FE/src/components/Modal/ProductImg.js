@@ -3,8 +3,6 @@ import styled from 'styled-components';
 
 import ModalInfoContextStore from '../../stores/ModalInfoStore';
 
-const REDUCTION_RATIO = 1.3;
-
 const ProductImgWrap = styled.div`
   width: 48.5%;
   height: 90%;
@@ -19,10 +17,8 @@ const TopImg = styled.img`
 const ThumbImgWrap = styled.div`
   display: flex;
   width: 100%;
-  height: 60px;
 
-  top: calc(392px / ${REDUCTION_RATIO});
-  margin-top: 7px;
+  margin-top: 2%;
   justify-content: flex-start;
   align-items: center;
 `;
