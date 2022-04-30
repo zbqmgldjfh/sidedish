@@ -21,8 +21,8 @@ public class ItemService {
     private final ItemRepository itemRepository;
     private final CategoryRepository categoryRepository;
 
-    public List<Item> findItemByDetailType(String type) {
-        return itemRepository.findByDetailType(type);
+    public List<Item> findItemByDetailType(String detailType) {
+        return itemRepository.findByDetailType(detailType);
     }
 
     public Item findItemById(Long id) {
